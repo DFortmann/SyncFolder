@@ -194,13 +194,11 @@ namespace SyncFolder.Controller
             string result = TryAndReturn(worker, () =>
             {
 
-                buffArr = dirInfo.GetDirectories()
-                          .Where(d => !d.Attributes.HasFlag(FileAttributes.System)
+                buffArr = dirInfo.GetDirectories().
+                          Where(d => !d.Attributes.HasFlag(FileAttributes.System)
                           && !d.Attributes.HasFlag(FileAttributes.Hidden)
                           && !d.Attributes.HasFlag(FileAttributes.Temporary)
-                          && !d.Name.StartsWith(".")
-                          && !d.FullName.EndsWith("System Volume Information")
-                          && !d.FullName.Contains("$RECYCLE.BIN")).ToArray();
+                          && !d.Name.StartsWith(".")).ToArray();
             });
 
             if (result == "UnauthorizedAccessException")
@@ -213,9 +211,7 @@ namespace SyncFolder.Controller
                          .Where(d => !d.Attributes.HasFlag(FileAttributes.System)
                          && !d.Attributes.HasFlag(FileAttributes.Hidden)
                          && !d.Attributes.HasFlag(FileAttributes.Temporary)
-                         && !d.Name.StartsWith(".")
-                         && !d.FullName.EndsWith("System Volume Information")
-                         && !d.FullName.Contains("$RECYCLE.BIN")).ToArray();
+                         && !d.Name.StartsWith(".")).ToArray();
                 });
             }
 

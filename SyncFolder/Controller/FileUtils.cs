@@ -194,11 +194,11 @@ namespace SyncFolder.Controller
             string result = TryAndReturn(worker, () =>
             {
 
-                buffArr = dirInfo.GetDirectories().
-                          Where(d => !d.Attributes.HasFlag(FileAttributes.System)
-                          && !d.Attributes.HasFlag(FileAttributes.Hidden)
-                          && !d.Attributes.HasFlag(FileAttributes.Temporary)
-                          && !d.Name.StartsWith(".")).ToArray();
+            buffArr = dirInfo.GetDirectories().
+                      Where(d => !d.Attributes.HasFlag(FileAttributes.System)
+                      && !d.Attributes.HasFlag(FileAttributes.Hidden)
+                      && !d.Attributes.HasFlag(FileAttributes.Temporary)
+                      && !d.Name.StartsWith(".")).ToArray();
             });
 
             if (result == "UnauthorizedAccessException")

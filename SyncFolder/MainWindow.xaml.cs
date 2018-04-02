@@ -2,7 +2,6 @@
 using MahApps.Metro.Controls;
 using SyncFolder.Controller;
 using System.Collections.Generic;
-using System.Security.Principal;
 
 namespace SyncFolder
 {
@@ -31,11 +30,6 @@ namespace SyncFolder
             CreateHelpText();
 
             LogCtrl.Status("SyncFolder 1.3 (2018) - DavidFortmann.ch");
-
-            WindowsIdentity  identity  = WindowsIdentity.GetCurrent();
-            WindowsPrincipal principal = new WindowsPrincipal(identity);
-            if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
-                LogCtrl.Warning("Not admin");
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
